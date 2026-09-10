@@ -1,0 +1,64 @@
+# Environment for the CuttingEEG 2026 source-reconstruction tutorial.
+#
+#   conda env create -f environment.yml     (or: mamba env create -f environment.yml)
+#   conda activate sourcerec-tutorial
+#   python -m ipykernel install --user --name sourcerec-tutorial
+#
+# 3D brain plots render inside JupyterLab via the trame backend:
+#   import mne; mne.viz.set_3d_backend("notebook")
+
+name: sourcerec-tutorial
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+
+  # --- MNE-Python and numerics -------------------------------------------
+  # mne-base, not the `mne` metapackage: `mne` drags in the full optional stack
+  # (mne-qt-browser, dipy, nilearn, openmeeg, ...). Everything the tutorial
+  # actually needs is listed explicitly below.
+  - mne-base=1.11
+  - numpy>=2.1,<3
+  - scipy>=1.14,<2
+  - pandas>=2.2,<3
+  - scikit-learn>=1.5,<2
+
+  # --- file formats: FreeSurfer surfaces/MRI, HDF5 source estimates -------
+  - nibabel>=5.3,<6
+  - h5io>=0.2.4
+  - h5py>=3.12,<4
+
+  # --- 2D plotting -------------------------------------------------------
+  - matplotlib>=3.9,<4
+  - seaborn>=0.13,<0.15
+
+  # --- 3D source visualisation (inline notebook backend) -----------------
+  - pyvista>=0.46,<0.50
+  # vtk-base rather than the `vtk` metapackage: `vtk` additionally pulls
+  # vtk-io-ffmpeg + a full ffmpeg, which is only needed for movie export.
+  - vtk-base>=9.3,<10
+  # trame renders the brains inline in JupyterLab.
+  - trame>=3.7
+  - trame-vtk>=2.8
+  - trame-vuetify>=2.7
+  # Not optional, even though nothing here opens a Qt window: mne.viz's "notebook"
+  # backend imports mne/viz/backends/_pyvista.py, which does `from pyvistaqt import
+  # BackgroundPlotter` at module level. Without pyvistaqt and a Qt binding for it,
+  # set_3d_backend("notebook") raises ModuleNotFoundError.
+  - pyvistaqt>=0.11
+  - pyside6>=6.7,!=6.9.1
+
+  # --- notebook environment ----------------------------------------------
+  - jupyterlab>=4.4,<5
+  - notebook>=7.4,<8
+  - ipykernel
+  - ipywidgets>=8.1,<9
+  - ipympl
+  - ipyevents
+
+  # --- dataset download and utilities ------------------------------------
+  - pooch>=1.8
+  - tqdm>=4.66
+  - joblib>=1.4
