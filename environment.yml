@@ -1,13 +1,26 @@
-name: cuttingeeg
+name: cuttingeeg-sourcerec
 channels:
   - conda-forge
 
 dependencies:
   - python=3.11
-  - jupyterlab
+  - pip
   - numpy
   - scipy
   - matplotlib
   - pandas
-  - mne
-  - pip
+  - jupyterlab
+  - ipywidgets
+  - nibabel
+  - nilearn
+  - pooch
+  - pip:
+      - mne
+      - pyvista
+      - "pyvista[jupyter]"
+      - trame
+      - trame-client
+      - trame-server
+      - trame-vtk
+      - trame-vuetify
+      - nest_asyncio2
