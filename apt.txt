@@ -2,3 +2,7 @@ libosmesa6
 libgl1-mesa-glx
 libegl1-mesa
 libgl1
+libosmesa6
+libgl1-mesa-glx
+libegl1-mesa
+libgl1
