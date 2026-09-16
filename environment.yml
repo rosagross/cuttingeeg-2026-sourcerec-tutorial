@@ -33,6 +33,10 @@ dependencies:
   # --- 2D plotting -------------------------------------------------------
   - matplotlib>=3.9,<4
   - seaborn>=0.13,<0.15
+  # nilearn draws the cortical surfaces with matplotlib's mplot3d in notebook 05b, the
+  # fallback for machines where the pyvista/VTK pipeline below does not work. Listed here
+  # rather than pip-installed from the notebook so the solver keeps the pins above.
+  - nilearn>=0.11,<0.15
 
   # --- 3D source visualisation (inline notebook backend) -----------------
   - pyvista>=0.46,<0.50
