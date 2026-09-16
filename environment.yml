@@ -40,11 +40,9 @@ dependencies:
 
   # --- 3D source visualisation (inline notebook backend) -----------------
   - pyvista>=0.46,<0.50
-
-  # following mne documentation instructions for headless servers
-  - vtk>=9.2=*osmesa*
-  - mesalib=21.2.5
-
+  # vtk-base rather than the `vtk` metapackage: `vtk` additionally pulls
+  # vtk-io-ffmpeg + a full ffmpeg, which is only needed for movie export.
+  - vtk-base>=9.3,<10
   # trame renders the brains inline in JupyterLab.
   - trame>=3.7
   - trame-vtk>=2.8
