@@ -39,7 +39,10 @@ dependencies:
   - nilearn>=0.11,<0.15
 
   # --- 3D source visualisation (inline notebook backend) -----------------
-  - pyvista>=0.46,<0.50
+  # Capped below 0.49: from that version on, pyvista finds its trame backend only through
+  # the separate trame-pyvista package, which conda-forge does not have. set_3d_backend
+  # ("notebook") then falls back to static images.
+  - pyvista>=0.48,<0.49
   # vtk-base rather than the `vtk` metapackage: `vtk` additionally pulls
   # vtk-io-ffmpeg + a full ffmpeg, which is only needed for movie export.
   - vtk-base>=9.3,<10
@@ -53,6 +56,10 @@ dependencies:
   # set_3d_backend("notebook") raises ModuleNotFoundError.
   - pyvistaqt>=0.11
   - pyside6>=6.7,!=6.9.1
+  # On JupyterHub/Binder the browser cannot reach the trame server on localhost. PyVista
+  # then builds the iframe URL as <hub prefix>/proxy/<port>/, which jupyter-server-proxy
+  # serves. Without it that URL is a 404 and the brains stay blank.
+  - jupyter-server-proxy>=4.1
 
   # --- notebook environment ----------------------------------------------
   - jupyterlab>=4.4,<5
