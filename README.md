@@ -11,6 +11,7 @@ Use the environment.yml file to set up the required packages using conda.
 Though there is a caviat: the environment.yml was designed to make 3D visualizations with pyvista work ath the JupyterHub, therefore it might require different packages when running it on your local machine. 
 
 ### Sources on which I based this tutorial
+- MNE Python documentation https://mne.tools/stable/documentation/index.html
 - https://www.youtube.com/watch?v=kCNpFraJPEY
 - https://mne.tools/stable/auto_tutorials/inverse/50_beamformer_lcmv.html
 - https://github.com/skjerns/MEG-source-space-decoding/
