@@ -1,6 +1,5 @@
 # Tutorial: Source Reconstruction of EEG data using MNE Python
-This tutorial was designed for the CuttingGardens 2026 and was part of the local program in the Berlin "Garden".
-Feel free to use this repository if you missed the session. The easiest way is to click on the link below, leading you directly to the notebooks.
+This tutorial was designed for the CuttingGardens 2026 and was part of the local program in the Berlin "Garden", but feel free to use it at any time. The easiest way to run it is to click on the link below, leading you directly to the notebooks.
 
 ## Executing via Binder/JupyterHub (in browser, nothing to install or to run locally)
 Visit: 
